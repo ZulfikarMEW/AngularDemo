@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-8">
+    <div class="card text-bg-primary">
+      <div class="card-header">Sectors</div>
+      <table class="table table-striped table-hover border-primary">
+        <thead class="thead-primary">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sector of sectorList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ sector }}</td>
+            <td class="text-center">
+              <button
+                type="button"
+                class="btn btn-warning"
+                (click)="onEdit(sector)"
+              >
+                <i class="fa fa-pencil-square-o"></i>
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="onDelete(sector)"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">Add New Sector</div>
+      <div class="card-body">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Sector Name"
+          [(ngModel)]="newSector"
+        />
+      </div>
+      <div class="card-footer text-end">
+        <button
+          *ngIf="!editMode"
+          type="button"
+          class="btn btn-success"
+          (click)="onAddNew()"
+        >
+          <i class="fa fa-plus-square"></i> Add
+        </button>
+        <button
+          *ngIf="editMode"
+          type="button"
+          class="btn btn-warning"
+          (click)="onEditSave()"
+        >
+          <i class="fa fa-pencil"></i> Edit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
